@@ -10,11 +10,11 @@ and navigate to http://localhost:8000/index.html to see the radar.
 
 # Data
 
-Data was gathered from the [tech survey] (https://github.com/ovotech/pe-tech-survey) and stored in csv for easy injesting.
-[techList.py](techList.py) takes this csv files as input and transforms it to the 
+Data was gathered from the [tech survey](https://github.com/ovotech/pe-tech-survey) and stored in csv for easy injesting.
+[techList.py](docs/data/techList.py) takes this csv files as input and transforms it to the 
 quadrant definitions for the tech radar, then outputs it to 'output'. All data 
 currently is set to the first ring. The lines from 'output' can then be copied 
-to entries in [index.html] (index.html#63)
+to entries in [index.html](docs/index.html#L63)
 
 ## License
 
