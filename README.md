@@ -1,73 +1,20 @@
-# Motivation
+# How To
 
-At [Zalando](http://zalando.de), we maintain a [public Tech
-Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
-align on technology choices. Is is based on the [pioneering work
-by ThoughtWorks](https://www.thoughtworks.com/radar).
+Clone the repo and navigate to the docs folder. Start up the http server
 
-This repository contains the code to generate the visualization:
-[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
-Feel free to use and adapt it for your own purposes.
-
-## Usage
-
-1. include `d3.js` and `radar.js`:
-
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.5.js"></script>
+```
+python -m SimpleHTTPServer 8000
 ```
 
-2. insert an empty `svg` tag:
+and navigate to http://localhost:8000/index.html to see the radar.
 
-```html
-<svg id="radar"></svg>
-```
+# Data
 
-3. configure the radar visualization:
-
-```js
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
-  ],
-  print_layout: true,
-  entries: [
-   {
-      label: "Some Entry",
-      quadrant: 3,          // 0,1,2,3 (counting clockwise, starting from bottom right)
-      ring: 2,              // 0,1,2,3 (starting from inside)
-      moved: -1             // -1 = moved out (triangle pointing down)
-                            //  0 = not moved (circle)
-                            //  1 = moved in  (triangle pointing up)
-    },
-    ...
-  ]
-});
-```
-
-Entries are positioned automatically so that they don't overlap.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://zalando.github.io/tech-radar/).
+Data was gathered from the [tech survey] (https://github.com/ovotech/pe-tech-survey) and stored in csv for easy injesting.
+[techList.py](techList.py) takes this csv files as input and transforms it to the 
+quadrant definitions for the tech radar, then outputs it to 'output'. All data 
+currently is set to the first ring. The lines from 'output' can then be copied 
+to entries in [index.html] (index.html#63)
 
 ## License
 
