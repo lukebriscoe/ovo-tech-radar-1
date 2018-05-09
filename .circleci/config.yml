@@ -13,10 +13,12 @@ jobs:
 
     steps:
       - checkout
-      
+
       - run:
           name: start application
-          command: python3 -m http.server 8000
+          command: | 
+          python3 -m http.server 8000
+          sleep 5
           background: true
 
       - run:
