@@ -9,16 +9,14 @@ jobs:
       
       - image: circleci/python:3.6.1
       
-    working_directory: ~/repo
+    working_directory: ~/repo/docs
 
     steps:
       - checkout
 
       - run:
           name: start application
-          command: |
-            cd docs
-            python3 -m http.server 8000
+          command: python3 -m http.server 8000
           background: true
 
       - run:
