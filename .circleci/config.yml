@@ -19,6 +19,7 @@ jobs:
           command: |
             cd docs
             python3 -m http.server 8000
+          background: true
 
       - run:
           name: run tests
