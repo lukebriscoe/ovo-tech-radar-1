@@ -18,10 +18,9 @@ jobs:
           name: start application
           command: |
             cd docs
-            python -m SimpleHTTPServer 8000
+            python3 -m http.server 8000
 
       - run:
           name: run tests
           command: |
             curl http://localhost:8000
-
