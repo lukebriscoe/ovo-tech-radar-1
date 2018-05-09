@@ -20,8 +20,3 @@ jobs:
             python3 -m http.server 8000
             sleep 5
           background: true
-
-      - run:
-          name: run tests
-          command: |
-            curl http://0.0.0.0:8000/
