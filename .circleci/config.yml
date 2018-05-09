@@ -17,7 +17,6 @@ jobs:
       - run:
           name: start application
           command: python3 -m http.server 8000
-          background: true
 
       - run:
           name: run tests
