@@ -5,7 +5,8 @@ jobs:
       - image: circleci/python:3.6.1
     working_directory: ~/repo/docs
     steps:
-      - checkout
+      - checkout:
+          path: ~/repo
       - run:
           name: sync to s3 bucket
           command: |
