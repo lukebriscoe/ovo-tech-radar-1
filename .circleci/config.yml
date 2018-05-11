@@ -1,22 +1,22 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 jobs:
-  build:
+  s3sync:
     docker:
-      
       - image: circleci/python:3.6.1
-      
     working_directory: ~/repo/docs
-
     steps:
       - checkout
-
       - run:
-          name: start application
-          command: | 
-            python3 -m http.server 8000
-            sleep 5
-          background: true
+          name: sync to s3 bucket
+          command: |
+            sudo apt-get install -y python-pip && pip install --user awscli
+            ~/.local/bin/aws s3 sync . s3://techradar.ovotech.org.uk
+
+workflows:
+  version: 2
+  s3sync:
+    jobs:
+      - s3sync:
+          filters:
+            branches:
+              only: master
