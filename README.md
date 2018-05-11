@@ -9,12 +9,7 @@ python -m SimpleHTTPServer 8000
 and navigate to http://localhost:8000/index.html to see the radar.
 
 # Data
-
-Data was gathered from the [tech survey](https://github.com/ovotech/pe-tech-survey) and stored in csv for easy injesting.
-[techList.py](docs/data/techList.py) takes this csv files as input and transforms it to the 
-quadrant definitions for the tech radar, then outputs it to 'output'. All data 
-currently is set to the first ring. The lines from 'output' can then be copied 
-to entries in [index.html](docs/index.html#L63)
+The data was initially gathered from the [tech survey](https://github.com/ovotech/pe-tech-survey), transformed into JSON and stored in the data.js file. Any further changes to the data should be made manually in that file.
 
 ---
 
