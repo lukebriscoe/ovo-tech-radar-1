@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  s3sync:
+    docker:
+      - image: circleci/python:3.6.1
+    working_directory: ~/repo/docs
+    steps:
+      - checkout
+      - run:
+          name: sync to s3 bucket
+          command: |
+            sudo apt-get install -y python-pip && pip install --user awscli
+            ~/.local/bin/aws s3 sync . s3://techradar.ovotech.org.uk
+
+workflows:
+  version: 2
+  s3sync:
+    jobs:
+      - s3sync:
+          filters:
+            branches:
+              only: master
