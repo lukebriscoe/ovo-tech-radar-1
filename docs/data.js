@@ -1,100 +1,162 @@
-var data = [
-  // Languages & Frameworks
-  {quadrant: 0, ring: 0, label: "Akka (Scala)", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Akka Http", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Akka Streams", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Alpakka", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Angular", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Clojure", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Doobie", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "fs2", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Cats", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "http4s", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "JavaScript", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Node.js", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Python", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "ReactJS", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "Scala", active: false, moved: 0},
-  {quadrant: 0, ring: 0, label: "TypeScript", active: false, moved: 0},
-  {quadrant: 0, ring: 1, label: "Aurelia", active: false, moved: 0},
-  {quadrant: 0, ring: 2, label: "Go", active: false, moved: 0},
-  {quadrant: 0, ring: 2, label: "GraphQL", active: false, moved: 0},
-  {quadrant: 0, ring: 2, label: "R", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "AngularJS (1.x)", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Apache Camel", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Haskell", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Java", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Ruby", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Spray", active: false, moved: 0},
-  {quadrant: 0, ring: 3, label: "Spring", active: false, moved: 0},
+const quadrants = {
+    "languagesAndframeworks": {
+        "quadrant": 0,
+        "rings": {
+            "adopt": [
+                "Akka (Scala)",
+                "Akka Http",
+                "Akka Streams",
+                "Alpakka",
+                "Angular",
+                "Clojure",
+                "Doobie",
+                "fs2",
+                "Cats",
+                "http4s",
+                "JavaScript",
+                "Node.js",
+                "Python",
+                "ReactJS",
+                "Scala",
+                "TypeScript"
+            ],
+            "assess": [
+                "Aurelia"
+            ],
+            "trial": [
+                "Go",
+                "GraphQL",
+                "R"
+            ],
+            "hold": [
+                "AngularJS (1.x)",
+                "Apache Camel",
+                "Haskell",
+                "Java",
+                "Ruby",
+                "Spray",
+                "Spring"
+            ]
+        }
+    },
+    "infrastructureAndHosting": {
+        "quadrant": 1,
+        "rings": {
+            "adopt": [
+                "Aiven",
+                "AWS EB",
+                "AWS ECS",
+                "Circle CI",
+                "Docker",
+                "GoCD",
+                "Google Kubernetes Engine",
+                "Kubernetes",
+                "Salesforce DX",
+                "Terraform",
+            ],
+            "assess": [
+                "AWS CloudFormation",
+                "AWS Lambda",
+                "CDN",
+                "Dataproc",
+                "GCP",
+                "Google Load Balancer",
+                "HAProxy",
+                "Jenkins",
+                "Kibana",
+                "Salesforce",
+            ],
+            "trial": [
+                "AWS ElastiCache",
+                "Travis CI",
+                "Vagrant",
+                "Concourse CI",
+                "Google Cloud Functions",
+                "Helm",
+            ],
+            "hold": [
+                "Azure",
+                "Chef",
+                "Team Managed NGINX",
+            ]
+        }
+    },
+    "loggingMonitoringAlerting": {
+        "quadrant": 2,
+        "rings": {
+            "adopt": [
+                "AWS CloudTrail",
+                "AWS CloudWatch",
+                "Elasticsearch",
+                "Grafana",
+                "Graylog",
+                "InfluxDB",
+                "Kamon",
+                "New Relic",
+                "Prometheus",
+                "VPC flow logs"
+            ],
+            "assess": [
+                "Chronograf",
+                "Kapacitor",
+                "Librato",
+                "Pagerduty",
+                "Stackdriver",
+                "Telegraf"
+            ],
+            "trial": [
+                "DataDog"
+            ],
+            "hold": [
+                "Logz.io",
+                "Sensu"
+            ]
+        }
+    },
+    "dataManagement": {
+        "quadrant": 3,
+        "rings": {
+            "adopt": [
+                "AWS RDS",
+                "AWS S3",
+                "AWS SQS",
+                "AWS SNS",
+                "BigQuery",
+                "Kafka",
+                "MongoDB",
+                "PostgreSQL"
+            ],
+            "assess": [
+                "Google Cloud Storage",
+                "Redis"
+            ],
+            "trial": [
+                "AWS Dynamodb",
+                "GCP Datastore",
+                "Google Cloud SQL",
+                "Google Datastore",
+                "MongoDB (mLab)"
+            ],
+            "hold": [
+                "Redshift"
+            ]
+        }
+    }
+}
 
-  // Infrastructure & Hosting
-  {quadrant: 1, ring: 0, label: "Aiven", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "AWS EB", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "AWS ECS", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Circle CI", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Docker", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "GoCD", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Google Container Engine", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Kubernetes", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Salesforce DX", active: false, moved: 0},
-  {quadrant: 1, ring: 0, label: "Terraform", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "AWS CloudFormation", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "AWS Lambda", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "CDN", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "Dataproc", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "GCP", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "Google Load Balancer", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "HAProxy", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "Jenkins", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "Kibana", active: false, moved: 0},
-  {quadrant: 1, ring: 1, label: "Salesforce", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "AWS ElastiCache", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "Travis CI", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "Vagrant", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "Concourse CI", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "Google Cloud Functions", active: false, moved: 0},
-  {quadrant: 1, ring: 2, label: "Helm", active: false, moved: 0},
-  {quadrant: 1, ring: 3, label: "Azure", active: false, moved: 0},
-  {quadrant: 1, ring: 3, label: "Chef", active: false, moved: 0},
-  {quadrant: 1, ring: 3, label: "Team Managed NGINX", active: false, moved: 0},
+const quadReducer = (acc, quadName) =>
+    Object.keys(quadrants[quadName].rings).reduce(ringReducer(quadName), acc)
 
-  // Logging, Monitoring & Alerting
-  {quadrant: 2, ring: 0, label: "AWS CloudTrail", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "AWS CloudWatch", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "Elasticsearch", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "Grafana", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "Graylog", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "InfluxDB", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "Kamon", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "New Relic", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "Prometheus", active: false, moved: 0},
-  {quadrant: 2, ring: 0, label: "VPC flow logs", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Chronograf", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Kapacitor", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Librato", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Pagerduty", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Stackdriver", active: false, moved: 0},
-  {quadrant: 2, ring: 1, label: "Telegraf", active: false, moved: 0},
-  {quadrant: 2, ring: 2, label: "DataDog", active: false, moved: 0},
-  {quadrant: 2, ring: 3, label: "Logz.io", active: false, moved: 0},
-  {quadrant: 2, ring: 3, label: "Sensu", active: false, moved: 0},
+const ringReducer = (quadName) => (acc, ringName) =>
+    acc.concat(quadrants[quadName].rings[ringName]
+        .map(labelMapper(quadName, ringName)))
 
-  // Data Management
-  {quadrant: 3, ring: 0, label: "AWS RDS", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "AWS S3", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "AWS SQS", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "AWS SNS", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "BigQuery", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "Kafka", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "MongoDB", active: false, moved: 0},
-  {quadrant: 3, ring: 0, label: "PostgreSQL", active: false, moved: 0},
-  {quadrant: 3, ring: 1, label: "Google Cloud Storage", active: false, moved: 0},
-  {quadrant: 3, ring: 1, label: "Redis", active: false, moved: 0},
-  {quadrant: 3, ring: 2, label: "AWS Dynamodb", active: false, moved: 0},
-  {quadrant: 3, ring: 2, label: "GCP Datastore", active: false, moved: 0},
-  {quadrant: 3, ring: 2, label: "Google Cloud SQL", active: false, moved: 0},
-  {quadrant: 3, ring: 2, label: "Google Datastore", active: false, moved: 0},
-  {quadrant: 3, ring: 2, label: "MongoDB (mLab)", active: false, moved: 0},
-  {quadrant: 3, ring: 3, label: "Redshift", active: false, moved: 0}
-];
+
+const labelMapper =  (quadName, ringName) => (label) => {
+    let ringNumber = Object.keys(quadrants[quadName].rings).indexOf(ringName)
+    let quadNumber = quadrants[quadName].quadrant
+    return {"quadrant": quadNumber, "ring": ringNumber,
+        label: label, active: false, moved: 0}
+}
+
+const data = Object.keys(quadrants).reduce(quadReducer, [])
